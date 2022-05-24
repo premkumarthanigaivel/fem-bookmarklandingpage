@@ -4,16 +4,17 @@ import Head from "next/head"
 import Feature from "components/Feature"
 import BookmarkIcon from "components/icons/Bookmark"
 import ArrowIcon from "components/icons/Arrow"
-
-/* 
-
-Features - Tab
-FAQ - Accordion
-
-
-*/
+import { useState } from "react"
 
 export default function Home() {
+  const [currentFeature, setCurrentFeature] = useState("Bookmark in one click")
+  const [accordionNo, setAccordionNo] = useState(null)
+
+  const getTabCSS = cssFeature =>
+    cssFeature === currentFeature
+      ? "text-slate-600 border-[#fb5759] border-b-[6px] pb-3"
+      : "text-[#999a9f] hover:text-slate-600"
+
   return (
     <Fragment>
       <Head>
@@ -88,24 +89,30 @@ export default function Home() {
               <ul className="flex justify-center w-2/3 mt-12 hover:cursor-pointer">
                 <li>
                   <a
-                    className="block text-slate-600 border-solid border-b-2 pb-4 px-16 whitespace-nowrap  
-                    hover:text-[#fb5759] border-[#fb5759] border-b-[6px] pb-3"
+                    className={`block border-solid border-b-2 pb-4 px-16 whitespace-nowrap ${getTabCSS(
+                      "Bookmark in one click"
+                    )}`}
+                    onClick={() => setCurrentFeature("Bookmark in one click")}
                   >
                     Simple Bookmarking
                   </a>
                 </li>
                 <li>
                   <a
-                    className="block text-[#999a9f] border-solid border-b-2 pb-4 px-16 whitespace-nowrap  hover:text-[#fb5759] 
-                    hover:border-[#fb5759] hover:border-b-[6px] hover:pb-3"
+                    className={`block border-solid border-b-2 pb-4 px-16 whitespace-nowrap ${getTabCSS(
+                      "Intelligent search"
+                    )}`}
+                    onClick={() => setCurrentFeature("Intelligent search")}
                   >
                     Speedy Searching
                   </a>
                 </li>
                 <li>
                   <a
-                    className="block text-[#999a9f] border-solid border-b-2 pb-4 px-16 whitespace-nowrap  hover:text-[#fb5759] 
-                    hover:border-[#fb5759] hover:border-b-[6px] hover:pb-3"
+                    className={`block border-solid border-b-2 pb-4 px-16 whitespace-nowrap ${getTabCSS(
+                      "Share your bookmarks"
+                    )}`}
+                    onClick={() => setCurrentFeature("Share your bookmarks")}
                   >
                     Easy Sharing
                   </a>
@@ -113,7 +120,7 @@ export default function Home() {
               </ul>
             </div>
           </section>
-          <Feature />
+          <Feature currentFeature={currentFeature} />
           <section>
             <div className="flex flex-col items-center">
               <h1 className="font-['Rubik'] text-3xl font-medium">
@@ -174,50 +181,72 @@ export default function Home() {
                 Here are some of our FAQs. If you have any other questions you’d
                 like answered please feel free to email us.
               </p>
-              <div className="w-2/5 mt-10 flex flex-col ">
-                <div className="border-y-2  py-4">
+              <div className="w-2/5 mt-10 flex flex-col transition-all">
+                <div
+                  className="border-y-2  py-4  transition-all"
+                  onClick={() => setAccordionNo(1)}
+                >
                   <div className="flex justify-between">
                     <div className="text-slate-700">What is Bookmark?</div>
-                    {/* <img src="icon-arrow.svg" alt="" className="" /> */}
-                    <ArrowIcon className="hover:rotate-180" />
+                    <ArrowIcon
+                      className={`${
+                        accordionNo === 1 && "rotate-180"
+                      } hover:rotate-180`}
+                    />
                   </div>
-                  {/* <div className="text-slate-500 mt-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Fusce tincidunt justo eget ultricies fringilla. Phasellus
-                    blandit ipsum quis quam ornare mattis.
-                  </div> */}
+                  {accordionNo === 1 && (
+                    <div className="text-slate-500 mt-4">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Fusce tincidunt justo eget ultricies fringilla. Phasellus
+                      blandit ipsum quis quam ornare mattis.
+                    </div>
+                  )}
                 </div>
-                <div className="border-b-2  py-4">
+                <div
+                  className="border-b-2  py-4 transition-all"
+                  onClick={() => setAccordionNo(2)}
+                >
                   <div className="flex justify-between">
                     <div className="text-slate-700">
                       How can I request a new browser?
                     </div>
-                    <ArrowIcon className="hover:rotate-180" />
-
-                    {/* <img src="icon-arrow.svg" alt="" className="" /> */}
+                    <ArrowIcon
+                      className={`${
+                        accordionNo === 2 && "rotate-180"
+                      } hover:rotate-180`}
+                    />
                   </div>
-                  {/*   <div className="text-slate-500 mt-4">
-                    Vivamus luctus eros aliquet convallis ultricies. Mauris
-                    augue massa, ultricies non ligula. Suspendisse imperdiet.
-                    Vivamus luctus eros aliquet convallis ultricies. Mauris
-                    augue massa, ultricies non ligula. Suspendisse imperdie
-                    tVivamus luctus eros aliquet convallis ultricies. Mauris
-                    augue massa, ultricies non ligula. Suspendisse imperdiet.
-                  </div> */}
+                  {accordionNo === 2 && (
+                    <div className="text-slate-500 mt-4">
+                      Vivamus luctus eros aliquet convallis ultricies. Mauris
+                      augue massa, ultricies non ligula. Suspendisse imperdiet.
+                      Vivamus luctus eros aliquet convallis ultricies. Mauris
+                      augue massa, ultricies non ligula. Suspendisse imperdie
+                      tVivamus luctus eros aliquet convallis ultricies. Mauris
+                      augue massa, ultricies non ligula. Suspendisse imperdiet.
+                    </div>
+                  )}
                 </div>
-                <div className="border-b-2  py-4">
+                <div
+                  className="border-b-2  py-4 transition-all"
+                  onClick={() => setAccordionNo(3)}
+                >
                   <div className="flex justify-between">
                     <div className="text-slate-700">Is there a mobile app?</div>
-                    <ArrowIcon className="hover:rotate-180" />
-
-                    {/* <img src="icon-arrow.svg" alt="" className="" /> */}
+                    <ArrowIcon
+                      className={`${
+                        accordionNo === 3 && "rotate-180"
+                      } hover:rotate-180`}
+                    />
                   </div>
-                  {/* <div className="text-slate-500 mt-4">
-                    Sed consectetur quam id neque fermentum accumsan. Praesent
-                    luctus vestibulum dolor, ut condimentum urna vulputate eget.
-                    Cras in ligula quis est pharetra mattis sit amet pharetra
-                    purus. Sed sollicitudin ex et ultricies bibendum.
-                  </div> */}
+                  {accordionNo === 3 && (
+                    <div className="text-slate-500 mt-4">
+                      Sed consectetur quam id neque fermentum accumsan. Praesent
+                      luctus vestibulum dolor, ut condimentum urna vulputate
+                      eget. Cras in ligula quis est pharetra mattis sit amet
+                      pharetra purus. Sed sollicitudin ex et ultricies bibendum.
+                    </div>
+                  )}
                 </div>
               </div>
               <button
@@ -272,6 +301,7 @@ export default function Home() {
             </div>
           </div>
         </footer>
+
         {/* <div className="h-72"></div> */}
       </div>
     </Fragment>
