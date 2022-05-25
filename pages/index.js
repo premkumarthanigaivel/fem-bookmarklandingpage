@@ -285,7 +285,7 @@ export default function Home() {
               </button>
             </div>
           </div>
-          <div className="h-auto md:h-[200px] bg-[#242946] px-40 py-12 h-36 flex flex-col md:flex-row justify-start items-center">
+          <div className="h-full md:h-[200px] bg-[#242946] px-40 py-12 h-36 flex flex-col md:flex-row justify-start items-center">
             <BookmarkIcon fill="white" />
             <ul className="md:ml-12 flex flex-col space-y-5 mt-10 md:mt-0 md:flex-row md:space-x-10 md:space-y-0">
               <div className="uppercase text-sm tracking-wide text-white hover:text-[#fb5759]">
