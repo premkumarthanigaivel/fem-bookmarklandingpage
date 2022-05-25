@@ -27,25 +27,25 @@ const Feature = ({ currentFeature }) => {
     .map((item, idx) => (
       <section
         key={idx}
-        className="h-[600px] py-24 flex justify-end items-center"
+        className="h-[600px] py-24 flex flex-col md:flex-row justify-end items-center mt-20"
       >
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-72 md:h-full">
           <img
-            className={`z-10 absolute right-40`}
+            className={`z-10 relative md:absolute bottom-8 left-12 right-0 w-4/5 md:w-fit md:right-40 md:top-0 md:max-w-full`}
             src={`./${item.path}`}
             alt=""
           />
           <div
-            className={`w-[70%] h-4/5 bg-[#5365dc] rounded-r-full absolute bottom-0 left-0 mix-blend-soft-light`}
+            className={`w-[70%] h-4/5 bg-[#5365dc] rounded-r-full  absolute bottom-0 left-0 mix-blend-soft-light`}
           />
         </div>
-        <div className="flex flex-col  items-start">
-          <h1 className="w-2/3 font-['Rubik'] text-3xl font-medium">
+        <div className="flex flex-col  items-center md:items-start ">
+          <h1 className="w-2/3 font-['Rubik'] text-3xl font-medium mt-10 md:mt-0">
             {item.title}
           </h1>
           <p className="text-md text-[#999a9f] w-2/3 mt-5">{item.desc}</p>
           <button
-            className="self-start mt-5  py-3 px-8 rounded-md text-sm text-white bg-[#5365dc] tracking-wide drop-shadow 
+            className="self-center md:self-start mt-5  py-3 px-8 rounded-md text-sm text-white bg-[#5365dc] tracking-wide drop-shadow 
       hover:bg-white hover:text-[#5365dc] hover:border-solid hover:border hover:border-[#5365dc]"
           >
             {item.btnTitle}
