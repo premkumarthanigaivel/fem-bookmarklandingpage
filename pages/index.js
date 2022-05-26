@@ -7,6 +7,8 @@ import ArrowIcon from "components/icons/Arrow"
 import CloseIcon from "components/icons/Close"
 import { useState } from "react"
 
+// Refactor
+
 export default function Home() {
   const [currentFeature, setCurrentFeature] = useState("Bookmark in one click")
   const [accordionNo, setAccordionNo] = useState(null)
@@ -201,7 +203,10 @@ export default function Home() {
               <div className="mt-10 flex w-4/5 flex-col transition-all md:w-2/5">
                 <div
                   className="border-y-2  py-4  transition-all"
-                  onClick={() => setAccordionNo(1)}
+                  onClick={() => {
+                    if (accordionNo !== 1) setAccordionNo(1)
+                    else setAccordionNo(null)
+                  }}
                 >
                   <div className="flex justify-between">
                     <div className="text-slate-700">What is Bookmark?</div>
@@ -219,7 +224,10 @@ export default function Home() {
                 </div>
                 <div
                   className="border-b-2  py-4 transition-all"
-                  onClick={() => setAccordionNo(2)}
+                  onClick={() => {
+                    if (accordionNo !== 2) setAccordionNo(2)
+                    else setAccordionNo(null)
+                  }}
                 >
                   <div className="flex justify-between">
                     <div className="text-slate-700">
@@ -244,7 +252,10 @@ export default function Home() {
                 </div>
                 <div
                   className="border-b-2  py-4 transition-all"
-                  onClick={() => setAccordionNo(3)}
+                  onClick={() => {
+                    if (accordionNo !== 3) setAccordionNo(3)
+                    else setAccordionNo(null)
+                  }}
                 >
                   <div className="flex justify-between">
                     <div className="text-slate-700">Is there a mobile app?</div>
