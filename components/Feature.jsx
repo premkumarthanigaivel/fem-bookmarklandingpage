@@ -27,26 +27,28 @@ const Feature = ({ currentFeature }) => {
     .map((item, idx) => (
       <section
         key={idx}
-        className="h-[600px] py-24 flex flex-col md:flex-row justify-end items-center mt-20"
+        className="flex h-[600px] flex-col items-center justify-end py-10 md:mt-0 md:flex-row md:py-24"
       >
-        <div className="relative w-full h-72 md:h-full">
+        <div className="relative h-72 w-full md:h-full">
           <img
-            className={`z-10 relative md:absolute bottom-8 left-12 right-0 w-4/5 md:w-fit md:right-40 md:top-0 md:max-w-full`}
+            className={`relative bottom-8 left-12 right-0 z-10 w-4/5 md:absolute md:right-40 md:top-0 md:w-fit md:max-w-full`}
             src={`./${item.path}`}
             alt=""
           />
           <div
-            className={`w-[70%] h-4/5 bg-[#5365dc] rounded-r-full  absolute bottom-0 left-0 mix-blend-soft-light`}
+            className={`absolute bottom-0 left-0 h-4/5  w-[70%] rounded-r-full bg-[#5365dc] mix-blend-soft-light`}
           />
         </div>
-        <div className="flex flex-col  items-center md:items-start ">
-          <h1 className="w-2/3 font-['Rubik'] text-3xl font-medium mt-10 md:mt-0">
+        <div className="mt-8 flex flex-col items-center  md:mt-0 md:items-start ">
+          <h1 className="mt-10 text-center font-['Rubik'] text-3xl font-medium md:mt-0 md:w-2/3 md:text-left">
             {item.title}
           </h1>
-          <p className="text-md text-[#999a9f] w-2/3 mt-5">{item.desc}</p>
+          <p className="text-md mt-5 w-full px-10 text-[#999a9f] md:w-2/3 md:px-0">
+            {item.desc}
+          </p>
           <button
-            className="self-center md:self-start mt-5  py-3 px-8 rounded-md text-sm text-white bg-[#5365dc] tracking-wide drop-shadow 
-      hover:bg-white hover:text-[#5365dc] hover:border-solid hover:border hover:border-[#5365dc]"
+            className="mt-5 self-center rounded-md  bg-[#5365dc] py-3 px-8 text-sm tracking-wide text-white drop-shadow hover:border 
+      hover:border-solid hover:border-[#5365dc] hover:bg-white hover:text-[#5365dc] md:self-start"
           >
             {item.btnTitle}
           </button>

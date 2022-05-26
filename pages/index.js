@@ -14,7 +14,7 @@ export default function Home() {
 
   const getTabCSS = cssFeature =>
     cssFeature === currentFeature
-      ? "text-slate-600 border-[#fb5759] border-b-[6px] pb-3"
+      ? "text-slate-600 border-b-[#fb5759] border-b-4"
       : "text-[#999a9f] hover:text-slate-600"
 
   return (
@@ -22,55 +22,54 @@ export default function Home() {
       <Head>
         <title>Bookmark</title>
       </Head>
-      <div className="w-full relative transition-all">
-        <header className="px-10 py-3 md:px-28 md:py-12 h-28 md:h-36 flex justify-between items-center">
+      <div className="relative w-full transition-all">
+        <header className="flex h-28 items-center justify-between px-10 py-3 md:h-36 md:px-28 md:py-12">
           <BookmarkIcon />
           <img
-            className="max-w-none md:hidden cursor-pointer"
+            className="max-w-none cursor-pointer md:hidden"
             src="./icon-hamburger.svg"
             alt=""
             onClick={() => setDrawerVisible(true)}
           />
-          <nav className="hidden md:flex w-2/5 justify-evenly items-center">
-            <div className="uppercase text-xs tracking-wide text-[#33333a] hover:text-[#fb5759]">
-              Features
-            </div>
-            <div className="uppercase text-xs tracking-wide text-[#33333a] hover:text-[#fb5759]">
-              Pricing
-            </div>
-            <div className="uppercase text-xs tracking-wide text-[#33333a] hover:text-[#fb5759]">
-              Contact
-            </div>
+          <nav className="hidden w-2/5 items-center justify-evenly md:flex">
+            {["Features", "Pricing", "Contact"].map(navItem => (
+              <div
+                key={navItem}
+                className="text-xs uppercase tracking-wide text-[#33333a] hover:text-[#fb5759]"
+              >
+                {navItem}
+              </div>
+            ))}
             <button
-              className="py-3 px-5 basis-24 rounded-sm uppercase text-xs text-white 
-            bg-[#fb5759] tracking-wide drop-shadow hover:bg-white hover:text-[#fb5759] 
-            hover:border-solid hover:border hover:border-[#fb5759]"
+              className="basis-24 rounded-sm bg-[#fb5759] py-3 px-5 text-xs uppercase 
+            tracking-wide text-white drop-shadow hover:border hover:border-solid 
+            hover:border-[#fb5759] hover:bg-white hover:text-[#fb5759]"
             >
               Login
             </button>
           </nav>
         </header>
         <main>
-          <section className="pb-12 md:pl-28 md:py-12 flex flex-col md:flex-row justify-between items-center">
-            <div className="order-last md:order-first flex flex-col md:w-4/5 items-center md:items-start">
-              <h1 className="md:w-2/3 font-['Rubik'] text-3xl md:text-5xl font-medium tracking-wide whitespace-nowrap">
+          <section className="flex flex-col items-center justify-between pb-12 md:flex-row md:py-12 md:pl-28">
+            <div className="order-last flex flex-col items-center md:order-first md:w-4/5 md:items-start">
+              <h1 className="whitespace-nowrap text-center font-rubik text-3xl font-medium tracking-wide md:w-2/3 md:text-left md:text-5xl">
                 A Simple Bookmark <br /> Manager
               </h1>
-              <p className="text-md text-[#999a9f] w-2/3 mt-5">
+              <p className="text-md mt-5 w-full px-10 text-center text-[#999a9f] md:w-2/3 md:px-0 md:text-left">
                 A clean and simple interface to organize your favourite
                 websites. Open a new browser tab and see your sites load
                 instantly. Try it for free.
               </p>
-              <div className="space-x-3 mt-5">
+              <div className="mt-5 space-x-3">
                 <button
-                  className="py-3 px-8 rounded-md text-sm text-white bg-[#5365dc] tracking-wide drop-shadow 
-                hover:bg-white hover:text-[#5365dc] hover:border-solid hover:border hover:border-[#5365dc]"
+                  className="rounded-md bg-[#5365dc] py-3 px-8 text-sm tracking-wide text-white drop-shadow 
+                hover:border hover:border-solid hover:border-[#5365dc] hover:bg-white hover:text-[#5365dc]"
                 >
                   Get it on Chrome
                 </button>
                 <button
-                  className="py-3 px-8 rounded-md text-sm bg-[#f7f7f7] tracking-wide drop-shadow 
-                hover:bg-white hover:border-solid hover:border hover:border-black"
+                  className="rounded-md bg-[#f7f7f7] py-3 px-8 text-sm tracking-wide drop-shadow 
+                hover:border hover:border-solid hover:border-black hover:bg-white"
                 >
                   Get it on Firefox
                 </button>
@@ -78,26 +77,26 @@ export default function Home() {
             </div>
             <div className="relative mb-8 md:mb-0">
               <img
-                className="z-10 block relative w-full md:w-fit md:right-12 max-w-none"
+                className="relative z-10 block w-full max-w-none md:right-12 md:w-fit"
                 src="./illustration-hero.svg"
                 alt=""
               />
-              <div className="w-4/5 h-[75%] bg-[#5365dc] rounded-l-full absolute bottom-0 right-0 mix-blend-hue" />
+              <div className="absolute bottom-0 right-0 h-[75%] w-4/5 rounded-l-full bg-[#5365dc] mix-blend-hue" />
             </div>
           </section>
           <section>
             <div className="flex flex-col items-center">
-              <h1 className="font-['Rubik'] text-3xl font-medium">Features</h1>
-              <p className="text-md text-center text-[#999a9f] w-5/12  mt-5">
+              <h1 className="font-rubik text-3xl font-medium">Features</h1>
+              <p className="text-md mt-5 w-full px-10  text-center text-[#999a9f] md:w-5/12  md:px-0">
                 Our aim is to make it quick and easy for you to access your
                 favourite websites. Your bookmarks sync between your devices so
                 you can access them on the go. Simple Bookmarking Speedy
                 Searching Easy Sharing
               </p>
-              <ul className="flex flex-col md:flex-row mb-10 md:mb-0 justify-center w-2/3 mt-12 hover:cursor-pointer">
+              <ul className="mb-10 mt-12 flex w-2/3 flex-col justify-center hover:cursor-pointer md:mb-0 md:flex-row">
                 <li>
                   <a
-                    className={`block border-solid  mb-2 md:mb-0  border-b-2 pb-4 px-16 whitespace-nowrap ${getTabCSS(
+                    className={`mb-2 block  whitespace-nowrap border-y-2 border-solid pt-2 pb-4  text-center md:mb-0 md:border-t-0 md:px-16 md:pt-0 md:text-left ${getTabCSS(
                       "Bookmark in one click"
                     )}`}
                     onClick={() => setCurrentFeature("Bookmark in one click")}
@@ -107,7 +106,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    className={`block border-solid  mb-2 md:mb-0 border-b-2 pb-4 px-16 whitespace-nowrap ${getTabCSS(
+                    className={`mb-2 block whitespace-nowrap border-b-2  border-solid pt-2 pb-4 text-center md:mb-0 md:px-16 md:pt-0 md:text-left ${getTabCSS(
                       "Intelligent search"
                     )}`}
                     onClick={() => setCurrentFeature("Intelligent search")}
@@ -117,7 +116,7 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    className={`block border-solid  mb-2 md:mb-0 border-b-2 pb-4 px-16 whitespace-nowrap ${getTabCSS(
+                    className={`mb-2 block whitespace-nowrap border-b-2 border-solid pt-2 pb-4 text-center md:mb-0 md:px-16 md:pt-0 md:text-left ${getTabCSS(
                       "Share your bookmarks"
                     )}`}
                     onClick={() => setCurrentFeature("Share your bookmarks")}
@@ -131,65 +130,75 @@ export default function Home() {
           <Feature currentFeature={currentFeature} />
           <section className="mb-10 md:mb-0">
             <div className="flex flex-col items-center">
-              <h1 className="font-['Rubik'] text-3xl font-medium">
+              <h1 className="font-rubik text-3xl font-medium">
                 Download the extension
               </h1>
-              <p className="px-12 md:px-0 text-md md:text-center text-[#999a9f] md:w-5/12  mt-5">
+              <p className="text-md mt-5 w-full px-16 text-center text-[#999a9f] md:w-5/12 md:px-0">
                 We’ve got more browsers in the pipeline. Please do let us know
                 if you’ve got a favourite you’d like us to prioritize.
               </p>
             </div>
-            <div className="flex flex-col md:flex-row justify-center md:space-x-5 mt-10 w-full">
-              <div className="p-6 flex flex-col self-center md:self-start border rounded-md drop-shadow-md md:w-68 items-center">
+            <div className="mt-10 flex w-full flex-col justify-center md:flex-row md:space-x-5">
+              <div className="md:w-68 relative flex flex-col items-center self-center rounded-md border px-6 pt-8 pb-4 drop-shadow-md md:self-start">
                 <img className="w-[40%]" src="./logo-chrome.svg" alt="" />
-                <div className="font-['Rubik'] text-md mt-5">Add to Chrome</div>
-                <div className="text-slate-500 text-sm">Minimum version 62</div>
-                <div className="w-full py-1 mt-5 mb-4 border-b-[4px] border-dotted" />
+                <div className="mt-5 font-rubik text-lg tracking-normal">
+                  Add to Chrome
+                </div>
+                <div className="font-rubik text-sm text-slate-500">
+                  Minimum version 62
+                </div>
+                <div className="absolute bottom-[23%] mt-5 mb-4 w-full border-b-[3px] border-dotted py-1" />
                 <div
-                  className=" font-['Rubik'] py-2 px-4 rounded-md text-sm text-white bg-[#5365dc] tracking-wide drop-shadow 
-      hover:bg-white hover:text-[#5365dc] hover:border-solid hover:border hover:border-[#5365dc]"
+                  className="mt-12  rounded-md bg-[#5365dc] py-4 px-8 font-rubik text-sm tracking-wide text-white drop-shadow 
+      hover:border hover:border-solid hover:border-[#5365dc] hover:bg-white hover:text-[#5365dc]"
                 >
                   Add & Install Extension
                 </div>
               </div>
-              <div className="p-6 flex flex-col  self-center md:self-start  mt-10 border rounded-md drop-shadow-md w-68 items-center">
+              <div className="w-68 mt-10 flex  flex-col items-center  self-center rounded-md border px-6 pt-8 pb-4 drop-shadow-md md:self-start">
                 <img className="w-[40%]" src="./logo-firefox.svg" alt="" />
-                <div className="font-['Rubik'] text-md mt-5">
+                <div className="mt-5 font-rubik text-lg tracking-normal">
                   Add to Firefox
                 </div>
-                <div className="text-slate-500 text-sm">Minimum version 55</div>
-                <div className="w-full py-1 mt-5 mb-4 border-b-[3px] border-dotted" />
+                <div className="font-rubik text-sm text-slate-500">
+                  Minimum version 55
+                </div>
+                <div className="absolute bottom-[23%] mt-5 mb-4 w-full border-b-[3px] border-dotted py-1" />
                 <div
-                  className=" font-['Rubik'] py-2 px-4 rounded-md text-sm text-white bg-[#5365dc] tracking-wide drop-shadow 
-      hover:bg-white hover:text-[#5365dc] hover:border-solid hover:border hover:border-[#5365dc]"
+                  className="mt-12  rounded-md bg-[#5365dc] py-4 px-8 font-rubik text-sm tracking-wide text-white drop-shadow 
+      hover:border hover:border-solid hover:border-[#5365dc] hover:bg-white hover:text-[#5365dc]"
                 >
                   Add & Install Extension
                 </div>
               </div>
-              <div className="p-6 flex flex-col  self-center md:self-start  mt-10 md:mt-16 border rounded-md drop-shadow-md w-68 items-center">
+              <div className="w-68 mt-10 flex  flex-col items-center  self-center rounded-md border px-6 pt-8 pb-4 drop-shadow-md md:mt-16 md:self-start">
                 <img className="w-[40%]" src="./logo-opera.svg" alt="" />
-                <div className="font-['Rubik'] text-md mt-5">Add to Opera</div>
-                <div className="text-slate-500 text-sm">Minimum version 46</div>
-                <div className="w-full py-1 mt-5 mb-4 border-b-[3px] border-dotted" />
+                <div className="mt-5 font-rubik text-lg tracking-normal">
+                  Add to Opera
+                </div>
+                <div className="font-rubik text-sm text-slate-500">
+                  Minimum version 46
+                </div>
+                <div className="absolute bottom-[23%] mt-5 mb-4 w-full border-b-[3px] border-dotted py-1" />
                 <div
-                  className=" font-['Rubik'] py-2 px-4 rounded-md text-sm text-white bg-[#5365dc] tracking-wide drop-shadow 
-      hover:bg-white hover:text-[#5365dc] hover:border-solid hover:border hover:border-[#5365dc]"
+                  className="mt-12  rounded-md bg-[#5365dc] py-4 px-8 font-rubik text-sm tracking-wide text-white drop-shadow 
+      hover:border hover:border-solid hover:border-[#5365dc] hover:bg-white hover:text-[#5365dc]"
                 >
                   Add & Install Extension
                 </div>
               </div>
             </div>
           </section>
-          <section className="mb-12 md:mb-0 text-center md:text-left md:pl-28 md:py-12">
-            <div className="flex flex-col items-center">
-              <h1 className="font-['Rubik'] text-3xl font-medium">
+          <section className="mb-12 text-center md:mb-0 md:py-12 md:pl-28 md:text-left">
+            <div className="flex flex-col items-center px-4">
+              <h1 className=" font-rubik text-3xl font-medium ">
                 Frequently Asked Questions
               </h1>
-              <p className="text-md text-center text-[#999a9f] px-4  md:px-0 md:w-5/12  mt-5">
+              <p className="text-md mt-5 px-4 text-center  text-[#999a9f] md:w-5/12  md:px-0">
                 Here are some of our FAQs. If you have any other questions you’d
                 like answered please feel free to email us.
               </p>
-              <div className="w-4/5 md:w-2/5 mt-10 flex flex-col transition-all">
+              <div className="mt-10 flex w-4/5 flex-col transition-all md:w-2/5">
                 <div
                   className="border-y-2  py-4  transition-all"
                   onClick={() => setAccordionNo(1)}
@@ -201,7 +210,7 @@ export default function Home() {
                     />
                   </div>
                   {accordionNo === 1 && (
-                    <div className="text-slate-500 mt-4 text-left">
+                    <div className="mt-4 text-left text-slate-500">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       Fusce tincidunt justo eget ultricies fringilla. Phasellus
                       blandit ipsum quis quam ornare mattis.
@@ -223,7 +232,7 @@ export default function Home() {
                     />
                   </div>
                   {accordionNo === 2 && (
-                    <div className="text-slate-500 mt-4  text-left">
+                    <div className="mt-4 text-left  text-slate-500">
                       Vivamus luctus eros aliquet convallis ultricies. Mauris
                       augue massa, ultricies non ligula. Suspendisse imperdiet.
                       Vivamus luctus eros aliquet convallis ultricies. Mauris
@@ -244,7 +253,7 @@ export default function Home() {
                     />
                   </div>
                   {accordionNo === 3 && (
-                    <div className="text-slate-500 mt-4  text-left">
+                    <div className="mt-4 text-left  text-slate-500">
                       Sed consectetur quam id neque fermentum accumsan. Praesent
                       luctus vestibulum dolor, ut condimentum urna vulputate
                       eget. Cras in ligula quis est pharetra mattis sit amet
@@ -254,8 +263,8 @@ export default function Home() {
                 </div>
               </div>
               <button
-                className="mt-10  py-4 px-10 rounded-md text-md text-white bg-[#5365dc] tracking-wide drop-shadow 
-      hover:bg-white hover:text-[#5365dc] hover:border-solid hover:border hover:border-[#5365dc]"
+                className="text-md  mt-10 rounded-md bg-[#5365dc] py-4 px-10 tracking-wide text-white drop-shadow 
+      hover:border hover:border-solid hover:border-[#5365dc] hover:bg-white hover:text-[#5365dc]"
               >
                 More Info
               </button>
@@ -263,50 +272,50 @@ export default function Home() {
           </section>
         </main>
         <footer>
-          <div className="flex flex-col justify-center items-center h-auto md:h-[350px] bg-[#5365dc]">
-            <div className="font-[Rubik] mt-5  text-white uppercase tracking-wide">
+          <div className="flex h-auto flex-col items-center justify-center bg-[#5365dc] md:h-[350px]">
+            <div className="mt-5 font-[Rubik]  uppercase tracking-wide text-white">
               35,000+ already joined
             </div>
-            <div className="font-[Rubik] px-2 mt-5 w-full md:w-4/12 text-3xl md:whitespace-normal md:text-4xl  text-white text-center">
+            <div className="mt-5 w-full px-2 text-center font-[Rubik] text-3xl text-white md:w-4/12  md:whitespace-normal md:text-4xl">
               Stay up-to-date with what we’re doing
             </div>
-            <div className="mx-auto md:mx-0 ml-10 mt-10 mb-5 md:mb-0">
+            <div className="mx-auto mt-10 mb-5 md:mx-0 md:ml-10 md:mb-0">
               <input
-                className="p-4 w-[300px] text-sm rounded-md"
+                className="w-[300px] rounded-md p-4 text-sm"
                 type="email"
                 placeholder="Enter your email address"
               />
               <button
-                className="w-[300px] block md:inline-block  mt-2 md:mt-0 py-4 px-6 md:ml-3 basis-24 rounded-md text-sm text-white 
-            bg-[#fa5859] tracking-wide drop-shadow hover:bg-white hover:text-[#fb5759] 
-            hover:border-solid hover:border hover:border-[#fb5759]"
+                className="mt-2 block w-[300px]  basis-24 rounded-md bg-[#fa5859] py-4 px-6 text-sm tracking-wide text-white drop-shadow 
+            hover:border hover:border-solid hover:border-[#fb5759] hover:bg-white hover:text-[#fb5759] 
+            md:mt-0 md:ml-3 md:inline-block"
               >
                 Contact Us
               </button>
             </div>
           </div>
-          <div className="h-full md:h-[200px] bg-[#242946] px-40 py-12 h-36 flex flex-col md:flex-row justify-start items-center">
+          <div className="flex h-full flex-col items-center justify-start bg-[#242946] px-40 py-12 md:h-[200px] md:flex-row">
             <BookmarkIcon fill="white" />
-            <ul className="md:ml-12 flex flex-col space-y-5 mt-10 md:mt-0 md:flex-row md:space-x-10 md:space-y-0">
-              <div className="uppercase text-sm tracking-wide text-white hover:text-[#fb5759]">
+            <ul className="mt-10 flex flex-col space-y-5 md:ml-12 md:mt-0 md:flex-row md:space-x-10 md:space-y-0">
+              <div className="text-sm uppercase tracking-wide text-white hover:text-[#fb5759]">
                 Features
               </div>
-              <div className="uppercase text-sm tracking-wide text-white hover:text-[#fb5759]">
+              <div className="text-sm uppercase tracking-wide text-white hover:text-[#fb5759]">
                 Pricing
               </div>
-              <div className="uppercase text-sm tracking-wide text-white hover:text-[#fb5759]">
+              <div className="text-sm uppercase tracking-wide text-white hover:text-[#fb5759]">
                 Contact
               </div>
             </ul>
-            <div className="ml-auto flex w-[100px] md:w-[70px] justify-start mt-10 md:mt-0">
+            <div className="ml-auto mt-10 flex w-[100px] justify-start md:mt-0 md:w-[70px]">
               <img src="./icon-facebook.svg" alt="" />
               <img src="./icon-twitter.svg" alt="" className="pl-5" />
             </div>
           </div>
         </footer>
         {drawerVisible && (
-          <div className="z-50 h-full w-screen flex flex-col px-10 py-3 absolute top-0 w-full bg-[#2f354f]">
-            <div className="flex justify-between mt-5">
+          <div className="absolute top-0 z-50 flex h-full w-screen flex-col bg-[#2f354f] px-10  py-3">
+            <div className="mt-5 flex justify-between">
               <BookmarkIcon fill="white" />
               <CloseIcon
                 className="cursor-pointer"
@@ -314,26 +323,25 @@ export default function Home() {
               />
             </div>
             <div className="mt-10 text-center leading-snug">
-              <div className="font-[Rubik] uppercase text-md tracking-widest py-3 border-t-2 text-white hover:text-[#fb5759]">
-                Features
-              </div>
-              <div className="font-[Rubik] uppercase text-md tracking-widest py-3 border-t-2  text-white hover:text-[#fb5759]">
-                Pricing
-              </div>
-              <div className="font-[Rubik] uppercase text-md tracking-widest py-3 border-t-2  border-b-2 text-white hover:text-[#fb5759]">
-                Contact
-              </div>
+              {["Features", "Pricing", "Contact"].map(navItem => (
+                <div
+                  key={navItem}
+                  className="text-md border-t-2 py-3 font-[Rubik] uppercase tracking-widest text-white hover:text-[#fb5759]"
+                >
+                  {navItem}
+                </div>
+              ))}
             </div>
             <button
-              className="w-full mt-5 py-1 px-5 basis-14 rounded-sm uppercase text-md text-white font-bold
-            bg-[#2f354f] tracking-wide drop-shadow border border-solid border-2"
+              className="text-md mt-5 w-full basis-14 rounded-sm border-2 border-solid bg-[#2f354f] py-1 px-5
+            font-bold uppercase tracking-wide text-white drop-shadow"
             >
               Login
             </button>
             <div className="mt-auto mb-5 flex w-[100px] justify-between   self-center">
               <img className="inline-block" src="./icon-facebook.svg" alt="" />
               <img
-                className="pl-5 inline-block"
+                className="inline-block pl-5"
                 src="./icon-twitter.svg"
                 alt=""
               />
